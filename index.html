@@ -21,6 +21,8 @@
     </div>
 </div>
 <script>
+    var rootURL = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+
     var socket = io()
     $(() => {
         $("#send").click(()=>{
@@ -42,12 +44,12 @@
     }
 
     function getMessages() {
-        $.get('http://localhost:3000/messages', (data) => {
+        $.get(rootURL + '/messages', (data) => {
             data.forEach(addMessage);
         })
     }
 
     function postMessage(message) {
-        $.post('http://localhost:3000/messages', message)
+        $.post(rootURL + '/messages', message)
     }
 </script>
