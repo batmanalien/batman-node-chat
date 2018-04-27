@@ -28,6 +28,10 @@
         $("#send").click(()=>{
             var message = { name: $("#name").val(), message: $("#message").val()}
             postMessage(message)
+            $("#message").val("");
+            if(!$("#name").is(":disabled")) {
+                $("#name").prop("disabled", true);
+            }
         })
         $("#message").keyup(function(event) {
             if (event.keyCode === 13) {
